@@ -15,11 +15,10 @@ public class Solution {
         dummy.next = head;
         ListNode slow = dummy;
         ListNode fast = dummy;
-
-        while (fast != null && slow!=null && fast.next!=null) {
+        while (fast != null && slow != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
-            if(slow==fast){
+            if(slow== fast ){
                 return true;
             }
         }

@@ -1,33 +1,23 @@
 class Solution {
     public int getCommon(int[] nums1, int[] nums2) {
-        HashSet<Integer>hs1 = new HashSet<>();
-        HashSet<Integer>hs2 = new HashSet<>();
+         int i=0,j=0,k=0;
+        int length = Math.max(nums1.length,nums2.length);
+        while (k<length){
+            if(nums1[i]>nums2[nums2.length-1]){
+               return -1;
+            }
+            else if(nums2[j]>nums1[nums1.length-1]){
+                return -1;
+            }
+            if(nums2[j]==nums1[i]){
+               return nums1[i];
+            } else if(nums2[j]<nums1[i]){
+               j++;
+            } else{
+                i++;
+            }
 
-        for(int i=0;i<nums1.length;i++){
-            hs1.add(nums1[i]);
         }
-        for(int i=0;i<nums2.length;i++){
-            hs2.add(nums2[i]);
-        }
-        int min1=Integer.MAX_VALUE,min2=Integer.MAX_VALUE;
-        for (Integer ele : hs1) {
-            if(hs2.contains(ele)){
-                if(min1>ele){
-                    min1=ele;
-                }
-            }
-        }
-        for (Integer ele : hs2) {
-            if(hs1.contains(ele)){
-                if(min2>ele){
-                    min2=ele;
-                }
-            }
-        }
-        if(min1==min2 && min1!=Integer.MAX_VALUE){
-            return min1;
-        }else{
-            return -1;
-        }
+        return -1;
     }
 }

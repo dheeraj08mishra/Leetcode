@@ -4,10 +4,10 @@ class Solution {
         HashSet<Integer>hs2 = new HashSet<>();
 
         for(int i=0;i<nums1.length;i++){
-            hs1.add(nums1[i]);   ///6,13,18,28,34,37  ......
+            hs1.add(nums1[i]);
         }
         for(int i=0;i<nums2.length;i++){
-            hs2.add(nums2[i]);  ///10,13,19,27......
+            hs2.add(nums2[i]);
         }
         int min1=Integer.MAX_VALUE,min2=Integer.MAX_VALUE;
         for (Integer ele : hs1) {

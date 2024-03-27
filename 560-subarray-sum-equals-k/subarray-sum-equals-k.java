@@ -6,8 +6,8 @@ class Solution {
             pref[i] = pref[i - 1] + nums[i];
         }
         HashMap<Integer, Integer> hm = new HashMap<>();
-         hm.put(0,1);
         int count = 0;
+        hm.put(0, 1);
         for (int i = 0; i < pref.length; i++) {
             if (hm.containsKey(pref[i] - k)) {
                 count += hm.get(pref[i] - k);
@@ -17,7 +17,6 @@ class Solution {
             } else {
                 hm.put(pref[i], 1);
             }
-
         }
         return count;
 

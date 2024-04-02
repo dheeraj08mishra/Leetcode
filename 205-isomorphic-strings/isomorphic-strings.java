@@ -1,20 +1,28 @@
 class Solution {
     public boolean isIsomorphic(String s, String t) {
-       int[] arr1 = new int[256];
-    int[] arr2 = new int[256];
+        boolean isomporphic = true;
+        HashMap<Character, Character> hm1 = new HashMap<>();
+        HashMap<Character, Boolean> hm2 = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (hm1.containsKey(s.charAt(i))) {
+                if (hm1.get(s.charAt(i)) != t.charAt(i)) {
+                    isomporphic = false;
+                    break;
+                }
+            } else {
 
-    for (int i = 0; i < s.length(); i++) {
+                if (hm2.containsKey(t.charAt(i))) {
+                    isomporphic = false;
+                    break;
+                } else {
+                    hm1.put(s.charAt(i), t.charAt(i));
+                    hm2.put(t.charAt(i), true);
+                }
 
-      char c1 = s.charAt(i);
-      char c2 = t.charAt(i);
+                hm1.put(s.charAt(i), t.charAt(i));
+            }
 
-      if (arr1[c1] != arr2[c2]) {
-        return false;
-      }
-
-      arr1[c1] = i + 1;
-      arr2[c2] = i + 1;
-    }
-    return true;
+        }
+        return isomporphic;
     }
 }

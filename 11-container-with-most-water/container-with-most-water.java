@@ -1,28 +1,19 @@
 class Solution {
     public int maxArea(int[] height) {
-          int left = 0;
-        int right = height.length - 1;
+        int pointer1 = 0;
+        int pointer2 = height.length - 1;
         int maxArea = 0;
-        
-        while (left < right) {
-            // Calculate the width of the container.
-            int width = right - left;
-            
-            // Calculate the height of the container (minimum of the two lines).
-            int containerHeight = Math.min(height[left], height[right]);
-            
-            // Calculate the current area and update maxArea if necessary.
-            int area = width * containerHeight;
-            maxArea = Math.max(maxArea, area);
-            
-            // Move the pointer pointing to the shorter line inward.
-            if (height[left] < height[right]) {
-                left++;
+        while (pointer1 < pointer2) {
+            int ht = Math.min(height[pointer1], height[pointer2]);
+            int width = pointer2 -pointer1;
+            int water = ht * width;
+            maxArea = Math.max(maxArea, water);
+            if (height[pointer1] <= height[pointer2]) {
+                pointer1++;
             } else {
-                right--;
+                pointer2--;
             }
         }
-        
         return maxArea;
     }
 }

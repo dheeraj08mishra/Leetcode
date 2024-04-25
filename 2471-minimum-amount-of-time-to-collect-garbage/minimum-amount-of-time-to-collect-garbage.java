@@ -1,14 +1,4 @@
 class Solution {
-    private static int findCount(String s, Character match) {
-        int count = 0;
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == match) {
-                count++;
-            }
-        }
-        return count;
-    }
-
     public int garbageCollection(String[] garbage, int[] travel) {
         int metalLastIndex = -1;
         int glassLastIndex = -1;

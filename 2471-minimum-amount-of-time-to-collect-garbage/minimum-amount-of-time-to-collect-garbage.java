@@ -11,38 +11,35 @@ class Solution {
 
     public int garbageCollection(String[] garbage, int[] travel) {
         int metalLastIndex = -1;
+        int glassLastIndex = -1;
+        int paperLastIndex = -1;
         int[] prefFormetal = new int[garbage.length];
+        int[] prefForglass = new int[garbage.length];
+        int[] prefForPaper = new int[garbage.length];
         for (int i = 0; i < garbage.length; i++) {
             int countm = findCount(garbage[i], 'M');
+            int countg = findCount(garbage[i], 'G');
+            int countp = findCount(garbage[i], 'P');
             {
                 prefFormetal[i] = countm;
                 if (countm > 0) {
-                    metalLastIndex=i;
+                    metalLastIndex = i;
                 }
             }
-        }
-        int glassLastIndex = -1;
-        int[] prefForglass = new int[garbage.length];
-        for (int i = 0; i < garbage.length; i++) {
-            int countm = findCount(garbage[i], 'G');
             {
-                prefForglass[i] = countm;
-                if (countm > 0) {
-                    glassLastIndex=i;
+                prefForglass[i] = countg;
+                if (countg > 0) {
+                    glassLastIndex = i;
                 }
             }
-        }
-        int paperLastIndex = -1;
-        int[] prefForPaper = new int[garbage.length];
-        for (int i = 0; i < garbage.length; i++) {
-            int countm = findCount(garbage[i], 'P');
             {
-                prefForPaper[i] = countm;
-                if (countm > 0) {
-                    paperLastIndex=i;
+                prefForPaper[i] = countp;
+                if (countp > 0) {
+                    paperLastIndex = i;
                 }
             }
         }
+
         int glassTruck = 0, paperTruck = 0, metalTruck = 0;
         glassTruck = prefForglass[0];
         for (int i = 1; i <= glassLastIndex; i++) {

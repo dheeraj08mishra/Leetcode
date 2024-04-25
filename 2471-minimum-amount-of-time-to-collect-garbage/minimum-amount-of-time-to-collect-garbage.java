@@ -13,41 +13,33 @@ class Solution {
         int metalLastIndex = -1;
         int glassLastIndex = -1;
         int paperLastIndex = -1;
-        int[] prefFormetal = new int[garbage.length];
-        int[] prefForglass = new int[garbage.length];
+        int[] prefForMetal = new int[garbage.length];
+        int[] prefForGlass = new int[garbage.length];
         int[] prefForPaper = new int[garbage.length];
         for (int i = 0; i < garbage.length; i++) {
-            int countm = findCount(garbage[i], 'M');
-            int countg = findCount(garbage[i], 'G');
-            int countp = findCount(garbage[i], 'P');
-            {
-                prefFormetal[i] = countm;
-                if (countm > 0) {
+            char[] chars = garbage[i].toCharArray();
+            for (char c : chars) {
+                if (c == 'M') {
+                    prefForMetal[i]++;
                     metalLastIndex = i;
-                }
-            }
-            {
-                prefForglass[i] = countg;
-                if (countg > 0) {
+                } else if (c == 'G') {
+                    prefForGlass[i]++;
                     glassLastIndex = i;
-                }
-            }
-            {
-                prefForPaper[i] = countp;
-                if (countp > 0) {
+                } else if (c == 'P') {
+                    prefForPaper[i]++;
                     paperLastIndex = i;
                 }
             }
         }
 
         int glassTruck = 0, paperTruck = 0, metalTruck = 0;
-        glassTruck = prefForglass[0];
+        glassTruck = prefForGlass[0];
         for (int i = 1; i <= glassLastIndex; i++) {
-            glassTruck += prefForglass[i] * 1 + travel[i - 1];
+            glassTruck += prefForGlass[i] * 1 + travel[i - 1];
         }
-        metalTruck += prefFormetal[0];
+        metalTruck += prefForMetal[0];
         for (int i = 1; i <= metalLastIndex; i++) {
-            metalTruck += prefFormetal[i] + travel[i - 1];
+            metalTruck += prefForMetal[i] + travel[i - 1];
         }
         paperTruck += prefForPaper[0];
         for (int i = 1; i <= paperLastIndex; i++) {

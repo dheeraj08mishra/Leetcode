@@ -1,7 +1,6 @@
 class Solution {
     public int findMaxK(int[] nums) {
         HashMap<Integer,Boolean> hm = new HashMap<>();
-
         for(int i=0;i<nums.length;i++){
             hm.put(nums[i],true);
         }

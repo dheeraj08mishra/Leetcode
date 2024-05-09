@@ -1,21 +1,17 @@
 class Solution {
     public long maximumHappinessSum(int[] happiness, int k) {
-        ArrayList<Integer> al = new ArrayList<>();
-        for (int i = 0; i < happiness.length; i++) {
-            al.add(happiness[i]);
-        }
-        Collections.sort(al);
+        Arrays.sort(happiness);
+        int j = 0;
         long sum = 0;
-        int count = 0;
-        int n = al.size();
-        while (k > 0 && n > 0 && al.get(n - 1) > 0) {
-            sum = sum + (al.get(n - 1));
-            n--;
-            count++;
-            if (n > 0) {
-                al.set(n - 1, al.get(n - 1) - count);
-            }
+        int length = happiness.length;
+        while (length > 0 && happiness[length - 1] > 0 && k > 0) {
+            sum += happiness[length - 1];
+            j++;
             k--;
+            length--;
+            if (length > 0) {
+                happiness[length - 1] = happiness[length - 1] - j;
+            }
         }
         return sum;
     }

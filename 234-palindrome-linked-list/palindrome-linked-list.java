@@ -11,23 +11,22 @@
 class Solution {
     public boolean isPalindrome(ListNode head) {
         ListNode temp = head;
-        ListNode newHead = new ListNode(head.val);
-        ListNode current = newHead;
-        ListNode original = head.next;
+        ListNode slow = head;
+        ListNode fast = head;
+        if (fast == null || fast.next == null)
+            return true;
 
-        while (original != null) {
-            current.next = new ListNode(original.val);
-            current = current.next;
-            original = original.next;
+        while (fast.next != null && fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        ListNode reverselistCheck = reverseList(temp);
-
-        while (newHead != null) {
-            if (newHead.val != reverselistCheck.val) {
+        ListNode secondHalf = reverseList(slow);
+        while (secondHalf != null && secondHalf.next != null) {
+            if (temp.val != secondHalf.val) {
                 return false;
             }
-            reverselistCheck = reverselistCheck.next;
-            newHead = newHead.next;
+            secondHalf = secondHalf.next;
+            temp = temp.next;
         }
         return true;
     }

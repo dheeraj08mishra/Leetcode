@@ -5,8 +5,8 @@ class Solution {
             if (st.isEmpty()) {
                 st.push(s.charAt(i));
             } else {
-                if (s.charAt(i) == 'B' && st.peek()=='A' ||
-                s.charAt(i) == 'D' && st.peek()=='C') {
+                if (s.charAt(i) == 'B' && st.peek() == 'A' ||
+                        s.charAt(i) == 'D' && st.peek() == 'C') {
                     st.pop();
                 } else {
                     st.push(s.charAt(i));
@@ -14,8 +14,8 @@ class Solution {
             }
         }
         StringBuilder str = new StringBuilder();
-        while (!st.empty()){
-            str.insert(0,st.pop());
+        while (!st.empty()) {
+            str.insert(0, st.pop());
         }
         return str.toString().length();
     }

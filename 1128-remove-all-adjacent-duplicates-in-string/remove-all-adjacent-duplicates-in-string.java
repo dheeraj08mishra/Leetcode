@@ -13,8 +13,8 @@ class Solution {
             }
         }
         StringBuilder str = new StringBuilder();
-        while (st.size() > 0) {
-            str.insert(0, st.pop());
+        while (!st.empty()){
+            str.insert(0,st.pop());
         }
         return str.toString();
     }

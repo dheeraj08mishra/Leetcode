@@ -13,10 +13,6 @@ class Solution {
                 }
             }
         }
-        StringBuilder str = new StringBuilder();
-        while (!st.empty()) {
-            str.insert(0, st.pop());
-        }
-        return str.toString().length();
+        return st.size();
     }
 }

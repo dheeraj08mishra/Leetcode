@@ -15,6 +15,7 @@
  */
 class Solution {
     List<Integer> al = new ArrayList<>();
+    Stack<TreeNode> st = new Stack<>();
 
     public List<Integer> inorderTraversal(TreeNode root) {
         inorderTraversalTree(root);
@@ -22,10 +23,23 @@ class Solution {
     }
 
     public void inorderTraversalTree(TreeNode root) {
-        if (root == null)
-            return;
-        inorderTraversalTree(root.left);
-        al.add(root.val);
-        inorderTraversalTree(root.right);
+        // if (root == null)
+        // return;
+        // inorderTraversalTree(root.left);
+        // al.add(root.val);
+        // inorderTraversalTree(root.right);
+
+        // iterative approach
+        TreeNode curr = root;
+        while (st.size() > 0 || curr != null) {
+            while (curr != null) {
+                st.push(curr);
+                curr = curr.left;
+            }
+            curr = st.peek();
+            st.pop();
+            al.add(curr.val);
+            curr = curr.right;
+        }
     }
 }

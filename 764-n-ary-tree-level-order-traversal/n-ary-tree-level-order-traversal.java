@@ -32,7 +32,7 @@ class Solution {
                  Node first = q.remove();
                 current.add(first.val);
                 if (first.children != null) {
-                    q.addAll(first.children);
+                    q.addAll(first.children); // it will enter all children
                 }
             }
             result.add(current);

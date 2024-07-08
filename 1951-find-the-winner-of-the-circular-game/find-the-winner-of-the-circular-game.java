@@ -11,7 +11,6 @@ class Solution {
                 count++;
             }
             q.remove();
-
         }
         return q.peek();
     }

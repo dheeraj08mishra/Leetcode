@@ -1,7 +1,6 @@
 class Solution {
     public String reverseParentheses(String s) {
         Stack<Character> st = new Stack<>();
-
         for (int i = 0; i < s.length(); i++) {
             if (st.isEmpty()) {
                 st.push(s.charAt(i));
@@ -12,7 +11,6 @@ class Solution {
                     StringBuilder str = new StringBuilder();
                     while (st.peek() != '(') {
                         str.append(st.pop());
-
                     }
                     st.pop();
                     int count = 0;
@@ -20,9 +18,7 @@ class Solution {
                         st.push(str.charAt(count));
                         count++;
                     }
-                    // i++;
                 }
-
             }
         }
         StringBuilder ans = new StringBuilder();
